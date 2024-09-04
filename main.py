@@ -9,23 +9,19 @@ api = ""
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
-# Путь к папке с изображениями
 IMAGE_FOLDER = 'files'
 
 
-# Класс для хранения состояния пользователя
 class UserState(StatesGroup):
     age = State()
     growth = State()
     weight = State()
 
 
-# Создание основной клавиатуры
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 keyboard.add(types.KeyboardButton('Рассчитать'), types.KeyboardButton('Информация'))
 keyboard.add(types.KeyboardButton('Купить'))
 
-# Создание Inline клавиатуры для продуктов
 product_inline_kb = InlineKeyboardMarkup(row_width=2)
 product_inline_kb.add(
     InlineKeyboardButton("Продукт1", callback_data="product_buying"),
